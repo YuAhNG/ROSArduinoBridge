@@ -13,13 +13,18 @@ void initEncoders(){
   pinMode(19, INPUT);
   pinMode(18, INPUT);
   //attachInterrupt(0, encoderLeftISR, CHANGE);  
-  //attachInterrupt(1, encoderLeftISR,  CHANGE);  
+  //attachInterrupt(1, encoderLeftISR, CHANGE);  
   //attachInterrupt(4, encoderRightISR, CHANGE);
   //attachInterrupt(5, encoderRightISR, CHANGE);
+  attachInterrupt(0, encoderLeftISR, RISING);  
+  attachInterrupt(1, encoderRightISR, RISING); 
 }
 
 void encoderLeftISR(){
-    if(direction(LEFT) == BACKWARDS){
+    if(1==digitalRead(19)){
+      left_enc_pos--;
+    }
+    else if(direction(LEFT) == BACKWARDS){
         left_enc_pos--;
     }else{
         left_enc_pos++;
@@ -27,7 +32,10 @@ void encoderLeftISR(){
 }
 
 void encoderRightISR(){
-    if(direction(RIGHT) == BACKWARDS){
+    if(1==digitalRead(18)){
+      right_enc_pos--;
+    }
+    else if(direction(RIGHT) == BACKWARDS){
       right_enc_pos--;
     }else{
       right_enc_pos++;
