@@ -8,27 +8,34 @@ int left_rotate = 0;
 int right_rotate = 0;
 
 void initEncoders(){
-  pinMode(2, INPUT);
-  pinMode(3, INPUT);
-  pinMode(19, INPUT);
-  pinMode(18, INPUT);
-  //attachInterrupt(0, encoderLeftISR, CHANGE);  
-  //attachInterrupt(1, encoderLeftISR,  CHANGE);  
-  //attachInterrupt(4, encoderRightISR, CHANGE);
-  //attachInterrupt(5, encoderRightISR, CHANGE);
+  pinMode(19, INPUT);//int4 AL motor_board_p09 //as Left encoder A
+  pinMode(18, INPUT);//int5 AR motor_board_p12 //as Left encoder B
+  pinMode(2, INPUT); //int0 BL motor_board_p06 //as Right encoder A
+  pinMode(3, INPUT); //int1 BR motor_board_p03 //as Right encoder B
+
+  attachInterrupt(4, encoderLeftISR, RISING);
+//  attachInterrupt(5, encoderLeftISR, RISING);
+  attachInterrupt(0, encoderRightISR, RISING);  
+//  attachInterrupt(1, encoderRightISR, RISING);  
 }
 
 void encoderLeftISR(){
-    if(direction(LEFT) == BACKWARDS){
-        left_enc_pos--;
+    if(1==digitalRead(18)){
+      left_enc_pos--;
+//    }
+//    else if(direction(LEFT) == BACKWARDS){
+//        left_enc_pos--;
     }else{
         left_enc_pos++;
     }
 }
 
 void encoderRightISR(){
-    if(direction(RIGHT) == BACKWARDS){
+    if(1==digitalRead(3)){
       right_enc_pos--;
+//    }
+//    else if(direction(RIGHT) == BACKWARDS){
+//      right_enc_pos--;
     }else{
       right_enc_pos++;
     }

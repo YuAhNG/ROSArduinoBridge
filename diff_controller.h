@@ -10,8 +10,8 @@ SetPointInfo;
 
 SetPointInfo leftPID, rightPID;
 
-int Kp = 20;
-int Kd = 12;
+int Kp = 50;
+int Kd = 0;
 int Ki = 0;
 int Ko = 50;
 

@@ -1,12 +1,12 @@
 #include "commands.h";
 // motor one
-int enA = 9;
-int in1 = 7;
-int in2 = 8;
+int enA = 11;
+int in1 = 23;
+int in2 = 25;
 // motor two
 int enB = 10;
-int in3 = 12;
-int in4 = 13;
+int in3 = 27;
+int in4 = 29;
 boolean directionLeft = false;
 boolean directionRight = false;
 
